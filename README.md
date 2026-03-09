@@ -26,9 +26,9 @@ We are evaluating the following tools for collaborative writing and publishing:
 
 | Tool | Notes |
 |------|-------|
-| [Manubot](https://github.com/manubot/manubot) | Used by the [Proteomics Tutorial](https://jessegmeyerlab.github.io/proteomics-tutorial/); outputs HTML and PDF |
 | [Quarto](https://quarto.org/) | Supports interactivity; mix of Markdown and Jupyter notebooks |
 | [JupyterBook](https://jupyterbook.org/) | Similar to Quarto; notebook-native |
+| [Manubot](https://github.com/manubot/manubot) | Used by the [Proteomics Tutorial](https://jessegmeyerlab.github.io/proteomics-tutorial/); outputs HTML and PDF; probably too static |
 
 Feedback on tooling is welcome — open or join Discussion!
 
