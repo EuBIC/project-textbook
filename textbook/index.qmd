@@ -1,5 +1,5 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+This is a the EuBIC-MS Textbook, a collaborative effort to create a comprehensive resource for mass spectrometry-based proteomics.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+[📄 Download PDF](EuBIC-MS-Textbook.pdf)
