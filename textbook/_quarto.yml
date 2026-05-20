@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "EuBIC-MS Textbook"
+  author: "EuBIC-MS"
+  date: "5/20/2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - mass spectrometry
+      - proteomics
+  pdf:
+    documentclass: scrreprt
+
+
+
