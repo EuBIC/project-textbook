@@ -17,8 +17,7 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - mass spectrometry
-      - proteomics
+      - cosmo
   pdf:
     documentclass: scrreprt
 
