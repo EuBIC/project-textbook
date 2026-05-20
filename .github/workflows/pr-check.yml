@@ -1,0 +1,36 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  render-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install Python dependencies
+        run: pip install -r textbook/requirements.txt
+
+      - name: Render Quarto
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: ./textbook/
+
+      - name: Upload rendered book as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-book-pr-${{ github.event.number }}
+          path: textbook/_book/
+          retention-days: 14
