@@ -1,0 +1,49 @@
+# Feature detection {#sec-feature-detection}
+
+<!--
+TODO: write a short lead paragraph defining a "feature" (m/z, retention time, intensity) and stating what this section delivers: a feature table ready for annotation.
+-->
+
+## From raw data to peaks
+
+- Profile versus centroid data, and where centroiding happens.
+- Noise, baseline, and the definition of a detection threshold.
+- Extracted ion chromatograms and how they are built.
+
+## Peak picking
+
+- Common algorithmic families and what assumptions each makes about peak shape.
+- Parameter choice and its effect on the number of features found.
+- Overlapping and co-eluting peaks.
+
+## Retention time alignment
+
+- Why retention time drifts within and between batches.
+- Warping approaches and their failure modes.
+- Anchoring on internal standards.
+
+## Correspondence and grouping
+
+- Matching features across samples into a single table.
+- Tolerance windows in the m/z and retention time dimensions.
+
+## Gap filling
+
+- Why zeros in a feature table are usually not true absences.
+- Re-integration versus imputation, and how the choice affects downstream statistics.
+
+## Isotope and adduct grouping
+
+- Collapsing isotopologues of the same compound into one feature.
+- Adducts, in-source fragments, and neutral losses.
+- Estimating how many features in a table are redundant.
+
+## Quality control
+
+- Pooled QC samples and injection order.
+- Signal drift, carryover, and blank subtraction.
+- Metrics for judging whether a feature table is usable.
+
+## Software
+
+<!-- TODO: table of common tools, their engine, and what part of the above they cover. -->

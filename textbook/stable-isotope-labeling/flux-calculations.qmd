@@ -1,0 +1,51 @@
+# Flux calculations {#sec-flux-calculations}
+
+<!--
+State plainly what a flux is, in units, and that it is inferred rather than measured.
+-->
+
+## From labeling patterns to flux
+
+- What a mass isotopomer distribution tells you about the reactions that produced a metabolite.
+- Worked intuition on a small branched pathway before any formalism.
+- Why labeling patterns constrain flux ratios more directly than absolute fluxes.
+
+## Metabolic models
+
+- Stoichiometric matrices and atom transition maps.
+- Model scope, and the consequences of leaving reactions out.
+- Compartmentation and why it complicates interpretation.
+
+## Steady state versus non-steady state
+
+- Metabolic and isotopic steady state, and the difference between them.
+- Stationary flux analysis.
+- Non-stationary analysis, and when the extra complexity is worth it.
+
+## Fitting
+
+- Formulating flux estimation as an optimization problem.
+- Simulating labeling patterns forward from a candidate flux distribution.
+- Local minima and multi-start strategies.
+- Goodness of fit and testing whether the model is adequate.
+
+## Confidence intervals
+
+- Why point estimates alone are not reportable.
+- Parameter continuation and Monte Carlo approaches.
+- Identifiability, and recognising a flux the data cannot constrain.
+
+## Related approaches
+
+- Flux balance analysis, and how it differs from isotope-based estimation.
+- Flux ratio analysis as a lighter-weight alternative.
+- Isotope tracing as a qualitative readout without a full model.
+
+## Reporting
+
+- What a flux map should show, including units and normalisation.
+- The minimum needed for another group to reproduce the estimate.
+
+## Software
+
+<!-- TODO: table of flux analysis tools and which of the above each supports. -->

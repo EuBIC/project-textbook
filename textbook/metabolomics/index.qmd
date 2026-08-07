@@ -1,0 +1,31 @@
+# Metabolomics {#sec-metabolomics}
+
+::: {.callout-note}
+## What you should know before reading this chapter
+
+This chapter assumes you are comfortable with the following.
+
+- Basic mass spectrometry instrumentation and terminology, as covered in @sec-introduction.
+- Chromatographic separation by LC and GC, at a conceptual level.
+- Reading a chromatogram and a mass spectrum.
+
+If any of these are unfamiliar, start with the linked material before continuing.
+
+<!-- TODO: add links to external resources for each prerequisite. -->
+
+The chapter is written for readers coming from either a wetlab or a computational background.
+Sections that assume substantial knowledge of one or the other are marked at the top.
+:::
+
+<!--
+Say what metabolomics is, how it differs from proteomics in scale and in the identification problem, and why the small-molecule case is harder to annotate.
+Then explain how the subsections below fit together as a pipeline.
+-->
+
+This part covers the path from a raw acquisition to a reported, annotated metabolite table.
+
+- @sec-feature-detection covers how a raw signal becomes a feature table.
+- @sec-annotation covers how chemical identity is assigned to a feature, and with what confidence.
+- @sec-databases-standards covers where the reference data lives and how results should be reported.
+
+Stable isotope labeling and flux analysis build directly on this material and are treated separately in [Stable isotope labeling and flux analysis](../stable-isotope-labeling/index.qmd).

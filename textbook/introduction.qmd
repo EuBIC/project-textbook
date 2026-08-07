@@ -1,3 +1,3 @@
-# Introduction
+# Introduction {#sec-introduction}
 
 - Intro is an overview of MS and navigation recommendations between topics and chapters (you want to know X, look on chapter X)

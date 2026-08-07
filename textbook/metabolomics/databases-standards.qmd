@@ -1,0 +1,39 @@
+# Databases and reporting standards {#sec-databases-standards}
+
+<!--
+The practical argument: an annotation is only as good as the reference data behind it and only as reusable as the metadata reported with it.
+-->
+
+## Compound databases
+
+- General chemical databases versus metabolite-specific ones.
+- Species- and pathway-specific resources.
+- Coverage, redundancy, and how database choice biases the results.
+
+## Spectral libraries
+
+- Experimental libraries and how they are acquired.
+- Predicted and community-contributed libraries.
+- Licensing and access, and why this matters for reproducible work.
+
+## Data repositories
+
+- Where raw and processed metabolomics data is deposited.
+- What a deposition should contain.
+- Finding and reusing public datasets.
+
+## Reporting standards
+
+- The Metabolomics Standards Initiative and what it asked for.
+- Minimum reporting requirements for an experiment.
+- Reporting annotation confidence honestly, including what was not identified.
+
+## File and metadata formats
+
+- Open raw formats and the vendor formats they replace.
+- Formats for feature tables and for annotation results.
+- Study metadata formats.
+
+## Checklist
+
+<!-- TODO: a practical checklist a reader can apply to their own manuscript before submission. -->
