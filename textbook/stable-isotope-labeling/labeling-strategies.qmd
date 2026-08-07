@@ -1,0 +1,49 @@
+# Labeling strategies {#sec-labeling-strategies}
+
+<!--
+TODO: write a short lead paragraph on what a tracer experiment is and what question it answers that an unlabeled experiment cannot.
+-->
+
+## Terminology
+
+- Isotopes, isotopologues, and isotopomers, and why the distinction matters.
+- Mass isotopomer distribution, enrichment, and labeled fraction.
+- Tracer, tracee, and label.
+
+<!-- TODO: these terms belong in the book glossary once one exists. -->
+
+## Choosing a tracer
+
+- Common tracers and what each is informative about.
+- Positional labeling and how label position determines which pathways can be distinguished.
+- Cost, availability, and practical constraints.
+
+## Experimental design
+
+- Labeling duration, and choosing between a short pulse and a long incubation.
+- Reaching isotopic steady state, and knowing when it has been reached.
+- Parallel labeling experiments with several tracers.
+- Controls, including the unlabeled control needed for correction.
+
+## Sample handling
+
+- Quenching and why speed matters for labile intermediates.
+- Extraction and the metabolite classes each method recovers.
+- Storage and degradation.
+
+## Measuring labeling
+
+- Requirements on resolving power for separating isotopologues.
+- LC-MS and GC-MS considerations, including derivatization for GC.
+- Distinguishing overlapping isotopologues from co-eluting interferences.
+
+## Natural abundance correction
+
+- Why the correction is necessary and what happens if it is skipped.
+- The correction matrix and how it is constructed.
+- Correcting for tracer purity.
+- Common pitfalls, including negative fractions after correction.
+
+## Software
+
+<!-- TODO: table of correction and analysis tools. -->

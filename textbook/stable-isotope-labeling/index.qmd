@@ -1,0 +1,28 @@
+# Stable isotope labeling and flux analysis {#sec-stable-isotope-labeling}
+
+::: {.callout-note}
+## What you should know before reading this chapter
+
+This chapter builds on [Metabolomics](../metabolomics/index.qmd) and assumes you are comfortable with the following.
+
+- Feature detection and metabolite annotation, as covered in @sec-feature-detection and @sec-annotation.
+- Isotopes, isotopologues, and how they appear in a mass spectrum.
+- Basic linear algebra, specifically matrix notation and solving linear systems.
+- Elementary knowledge of central carbon metabolism and of what a metabolic pathway is.
+
+<!-- TODO: add links to external resources for each prerequisite. -->
+
+The flux analysis sections assume more quantitative background than the rest of the book.
+Readers from a wetlab background may prefer to read @sec-labeling-strategies first and return to @sec-flux-calculations afterwards.
+:::
+
+<!--
+TODO: write the chapter overview.
+The key framing: conventional metabolomics measures pool sizes, which are a snapshot of concentration, whereas labeling measures turnover, which is the rate at which metabolism actually runs.
+Give a concrete example where two conditions have identical pool sizes but very different fluxes.
+-->
+
+This part covers how isotopically labeled tracers turn a metabolomics measurement into a statement about metabolic activity.
+
+- @sec-labeling-strategies covers experimental design, tracer choice, and getting from raw data to a corrected labeling pattern.
+- @sec-flux-calculations covers turning those patterns into flux estimates, and how much to trust them.
