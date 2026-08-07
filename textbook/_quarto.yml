@@ -9,6 +9,15 @@ book:
     - index.qmd
     - guidelines.qmd
     - introduction.qmd
+    - part: metabolomics/index.qmd
+      chapters:
+        - metabolomics/feature-detection.qmd
+        - metabolomics/annotation.qmd
+        - metabolomics/databases-standards.qmd
+    - part: stable-isotope-labeling/index.qmd
+      chapters:
+        - stable-isotope-labeling/labeling-strategies.qmd
+        - stable-isotope-labeling/flux-calculations.qmd
     - authors.qmd
 
 bibliography: references.bib
