@@ -1,0 +1,52 @@
+# Annotation {#sec-annotation}
+
+<!--
+Unlike a peptide, a small molecule cannot be inferred from a sequence database, so annotation is evidence accumulation rather than database search.
+Distinguish "identification" from "annotation" and say which term this section uses.
+-->
+
+## Levels of confidence
+
+- Why a single confidence label is needed and what it communicates to a reader.
+- The Metabolomics Standards Initiative levels and their later refinements.
+- What evidence each level requires.
+
+## Accurate mass and molecular formula
+
+- Mass accuracy, resolving power, and how they bound the candidate list.
+- Formula assignment and the combinatorial explosion with increasing mass.
+- Heuristic rules used to filter implausible formulas.
+
+## Isotope patterns and adducts
+
+- Using the isotope envelope to constrain elemental composition.
+- Adduct and charge state assignment.
+- Ionization mode and what it does to the observable metabolome.
+
+## MS/MS spectral matching
+
+- Reference spectral libraries and what makes a match trustworthy.
+- Similarity scoring and its sensitivity to collision energy and instrument type.
+- Spectral networking for propagating annotations to unmatched spectra.
+
+## In-silico fragmentation
+
+- Predicting fragments from a structure, and predicting structures from fragments.
+- Combinatorial and machine-learning approaches.
+- When in-silico evidence is and is not sufficient to raise a confidence level.
+
+## Orthogonal evidence
+
+- Retention time and retention index.
+- Collision cross section from ion mobility.
+- Matching against an authentic standard, and why this remains the gold standard.
+
+## False discovery in annotation
+
+- Why proteomics-style target-decoy does not transfer directly.
+- Decoy construction for spectral libraries.
+- Reporting error rates for an annotated feature list.
+
+## Software
+
+<!-- TODO: table of common tools and what evidence type each contributes. -->
