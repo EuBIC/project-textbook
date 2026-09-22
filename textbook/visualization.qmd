@@ -1,0 +1,9 @@
+# Visualization
+
+::: {.callout-tip}
+Read [Statistics & downstream analysis](statistics-downstream-analysis.qmd) first.
+:::
+
+::: {.callout-note}
+TODO: Add content on visualizing mass spectrometry data, peptide-spectrum matches, LC-MS data, etc.
+:::

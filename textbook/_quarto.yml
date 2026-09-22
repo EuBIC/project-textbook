@@ -14,6 +14,7 @@ book:
     - quantification.qmd
     - post-quantification-processing.qmd
     - significance-analysis.qmd
+    - visualization.qmd
     - machine-learning-ai.qmd
     - workflows-reproducibility.qmd
     - programming-tools.qmd
