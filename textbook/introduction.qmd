@@ -1,8 +1,21 @@
-# Introduction
+# Introduction to Mass Spectrometry
 
 - Intro is an overview of MS and navigation recommendations between topics and chapters (you want to know X, look on chapter X)
 
 
+
+## Bottom-up and top-down proteomics
+
+Mass spectrometry (MS)-based proteomics integrates liquid chromatography (LC), mass spectrometry, and bioinformatics to detect and quantify proteins in complex biological samples [@Guo2025-yi].
+
+Proteomics analyses can be broadly divided into bottom-up and top-down approaches.
+In bottom-up proteomics, proteins are enzymatically digested into peptides before mass spectrometry analysis, allowing high-throughput identification with subsequent protein inference.
+In top-down proteomics, intact proteins are analyzed directly, preserving sequence variants and post-translational modifications, but with greater technical challenges.
+
+## Sample preparation and liquid chromatography
+
+In typical bottom-up proteomics workflows, proteins are extracted from cells or tissues and enzymatically digested into peptides using enzymes such as trypsin, Lys-C, or Asp-N [@Shuken2023-fo]. The resulting peptide mixture is then separated by (high-performance) liquid chromatography (HPLC), which increases sensitivity by seperating the elution of peptides into the mass spectrometer over time [@Steen2004-zw; @Liu2007-bo].
+The output of an LC-MS run can be visualized as a chromatogram, with retention time on the x-axis and ion intensity on the y-axis, where distinct peaks represent analytes separated by liquid chromatography and subsequently detected by the mass spectrometer.
 
 ## Mass Spectrometry Fundamentals
 
@@ -21,12 +34,24 @@ The most widely used fragmentation method is collision-induced dissociation (CID
 The resulting fragment ions are commonly classified as b-ions and y-ions [@Roepstorff1984-fu]. 
 Modern mass spectrometers frequently employ higher-energy collisional dissociation (HCD), a refined form of CID in which ions are accelerated to higher collision energies, producing more efficient and reproducible fragmentation [@Olsen2007-px].
 
+### Performance characteristics of mass analyzers
+
+Key performance characteristics of a mass analyzer include its mass range, resolution, mass accuracy, sensitivity, and scan speed [@Dass2007-gs].
+
+- **Mass range** defines the span of *m/z* values the instrument can measure.
+- **Resolution** describes how close two mass peaks can be while still being separated by the instrument.
+- **Mass accuracy** reflects how closely the measured *m/z* values match the true values, typically expressed in parts per million (ppm).
+- **Sensitivity** describes the capacity of the instrument to detect low-abundance ions, often gauged by the signal-to-noise ratio.
+- **Scan speed** describes how rapidly spectra are acquired during the analysis.
+
 
 ## Data Acquisition Strategies
 There are several data acquisition method to select peptides from the MS1 for further fragmentation into MS2. 
 There are three main acquisition types in proteomics, in which the precursors are selected from the MS1. 
 The three main data collection strategies are: targeted analysis, data-dependent acquisition (DDA) [@Stahl1996-wd], and data-independent acquisition (DIA). 
 Targeted analysis includes techniques such as selected/multiple reaction monitoring (SRM/MRM) [@Lange2008-srm] and parallel reaction monitoring (PRM) [@Peterson2012-prm], in which a predefined set of precursor ions, and in the case of SRM/MRM their corresponding fragment ions, are monitored throughout the run rather than selected dynamically.
+In DDA, the precursors with the highest intensities in the MS1 scan are selected for fragmentation.
+In DIA, all precursors within a whole *m/z* range are fragmented together in sequential isolation windows, generating comprehensive and unbiased MS/MS data for all detectable ions.
 
 - See @sec-dda-search for details on the database search approach used with DDA.
 - See @sec-dia-search for details on the DIA search approach.

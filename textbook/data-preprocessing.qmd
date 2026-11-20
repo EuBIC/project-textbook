@@ -1,9 +1,148 @@
 # Data preprocessing & processing
 
 ::: {.callout-tip}
-Read [Quantification](quantification.qmd) first.
+Read [Introduction](introduction.qmd) first.
 :::
 
+## Spectral preprocessing: centroiding, deisotoping and charge-state assignment
+
+In a computational proteomics workflow, several processing steps are required before peptides and proteins can be identified from the acquired raw mass spectrometry data.
+First, the raw spectra undergo feature detection, including centroiding and deisotoping, to produce a cleaner and more interpretable signal representing molecular masses.
+These steps reduce noise and improve resolution by transforming complex raw profile data into clean spectra.
+
+During centroiding, each mass peak, which in profile mode is recorded as an approximately normally distributed signal over a small *m/z* range, is reduced to a single representative peak.
+A peptide ion does not appear as a single peak but as an isotopic cluster, because a fraction of its molecules contain heavier isotopes, most notably ^13^C.
+During deisotoping, the isotopic cluster is collapsed into a single peak corresponding to the monoisotopic mass.
+
+The charge state of the ion is assigned from the spacing between the peaks in its isotope pattern, which in turn allows the monoisotopic mass of the peptide ion to be determined.
+Since adjacent isotope peaks differ by the mass difference between ^13^C and ^12^C (1.0034 Da), the observed spacing in *m/z* equals this mass difference divided by the charge.
+For example, an observed spacing of approximately 0.50 between isotope peaks corresponds to a charge state of +2 (1.0034 / 2 ≈ 0.50).
+Accurate precursor mass estimation is critical for the subsequent database search [@Tyanova2016-rf].
+
+### Example with simulated data
+
+The example below simulates a small MS1 spectrum with two peptides, one at charge +2 and one at charge +3, and runs the three steps on it.
+
+```{python}
+#| label: simulate-spectrum
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+from math import comb
+
+PROTON = 1.007276    # mass of a proton (Da)
+C13_DIFF = 1.003355  # mass difference between 13C and 12C (Da)
+
+mz_axis = np.arange(645, 810, 0.001)
+profile = np.zeros_like(mz_axis)
+
+
+def add_peak(mz, height, width=0.005):
+    """Add a Gaussian-shaped profile peak to the spectrum."""
+    profile[:] += height * np.exp(-0.5 * ((mz_axis - mz) / width) ** 2)
+
+
+# Two peptides: (neutral monoisotopic mass, charge, intensity)
+for mass, z, height in [(1298.62, 2, 1.0), (2405.15, 3, 0.6)]:
+    n_carbon = round(mass / 111.1 * 4.94)            # approximate number of carbons
+    # binomial chance of a molecule containing 0, 1, 2, ... 13C atoms
+    isotopes = np.array([comb(n_carbon, k) * 0.0107**k * 0.9893**(n_carbon - k)
+                         for k in range(5)])
+    mono_mz = (mass + z * PROTON) / z
+    for k, abundance in enumerate(isotopes / isotopes.max()):
+        add_peak(mono_mz + k * C13_DIFF / z, height * abundance)
+
+# A few single noise peaks
+for mz in [656.01, 714.61, 758.55, 771.57]:
+    add_peak(mz, 0.06)
+```
+
+**Centroiding** reduces each profile peak to a single *m/z* value: the intensity-weighted mean of the points around the peak apex.
+
+```{python}
+#| label: centroiding
+#| echo: false
+def centroid(mz, intensity, threshold=0.02):
+    peaks = []
+    for i in range(1, len(intensity) - 1):
+        if intensity[i] > threshold and intensity[i - 1] < intensity[i] >= intensity[i + 1]:
+            window = slice(i - 5, i + 6)
+            centre = np.average(mz[window], weights=intensity[window])
+            peaks.append((centre, intensity[i]))
+    return np.array(peaks)
+
+
+centroids = centroid(mz_axis, profile)
+```
+
+**Deisotoping and charge-state assignment.**
+Starting from the lowest *m/z* peak, we try each charge $z$ and count how many following peaks are spaced by $1.003355 / z$.
+The charge with the longest series is assigned, the first peak is taken as the monoisotopic peak, and the series is collapsed into one peak.
+The neutral monoisotopic mass is $M = (m/z - m_{\text{proton}}) \cdot z$.
+
+```{python}
+#| label: deisotoping
+#| echo: false
+def deisotope(peaks, max_charge=4, tolerance=0.01):
+    features, used = [], set()
+    for i, (mono_mz, _) in enumerate(peaks):
+        if i in used:
+            continue
+        best_z, best_series = None, [i]
+        for z in range(1, max_charge + 1):
+            series = [i]
+            while True:
+                expected = peaks[series[-1], 0] + C13_DIFF / z
+                match = np.where(np.abs(peaks[:, 0] - expected) < tolerance)[0]
+                if len(match) == 0:
+                    break
+                series.append(match[0])
+            if len(series) > len(best_series):
+                best_z, best_series = z, series
+        if best_z is None:  # no isotope partners: not a peptide feature
+            continue
+        used.update(best_series)
+        features.append((mono_mz, peaks[best_series, 1].sum(), best_z))
+    return features
+
+
+features = deisotope(centroids)
+```
+
+```{python}
+#| label: fig-preprocessing-steps
+#| echo: false
+#| fig-cap: "Spectral preprocessing of two simulated isotope clusters. Top: profile data. Middle: centroided peaks. Bottom: after deisotoping, each cluster is reduced to one peak at its monoisotopic *m/z*, labelled with the assigned charge and the calculated neutral mass."
+fig, axes = plt.subplots(3, 2, figsize=(7, 5), sharex="col")
+for col, (lo, hi) in enumerate([(649.8, 652.5), (802.3, 804.5)]):
+    keep = (mz_axis > lo) & (mz_axis < hi)
+    axes[0, col].plot(mz_axis[keep], profile[keep], color="black", lw=0.8)
+
+    c = centroids[(centroids[:, 0] > lo) & (centroids[:, 0] < hi)]
+    axes[1, col].vlines(c[:, 0], 0, c[:, 1], color="tab:blue", lw=2)
+
+    for mz, intensity, z in features:
+        if lo < mz < hi:
+            axes[2, col].vlines(mz, 0, intensity, color="tab:red", lw=2)
+            mass = (mz - PROTON) * z
+            axes[2, col].text(mz + 0.1, intensity * 0.7, f"z = +{z}\nM = {mass:.2f} Da")
+    axes[2, col].set_xlabel("m/z")
+
+for row, label in enumerate(["Profile", "Centroided", "Deisotoped"]):
+    axes[row, 0].set_ylabel(label)
+    for ax in axes[row]:
+        ax.set_ylim(bottom=0)
+plt.tight_layout()
+plt.show()
+```
+
+The isotope spacings of 0.50 and 0.33 give charges +2 and +3, and the calculated masses match the simulated peptides.
+The noise peaks have no isotope partners and are dropped.
+Note that for the larger peptide, the monoisotopic peak is not the tallest peak in the cluster, so an algorithm cannot simply assume the tallest peak is monoisotopic.
+
+Real algorithms also handle overlapping clusters, compare the observed isotope pattern with the expected one, and use the retention time dimension.
+
 ::: {.callout-note}
-TODO: Add content on data preprocessing & processing.
+TODO: Add further content on data preprocessing & processing.
 :::
+
