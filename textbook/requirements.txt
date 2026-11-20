@@ -1,3 +1,5 @@
 # This file lists the Python dependencies for the EuBIC-MS Textbook project, installed by pip
 pandas
 numpy
+matplotlib
+jupyter

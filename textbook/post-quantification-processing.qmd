@@ -1,4 +1,4 @@
-# Data preprocessing & processing
+# Post-quantification processing
 
 ::: {.callout-tip}
 Read [Quantification](quantification.qmd) first.

@@ -61,3 +61,45 @@ This approach can provide information on protein isoforms and post-translational
 : An approach to proteomics analysis in which proteins are partially digested into larger peptide fragments, which are then analyzed by mass spectrometry. 
 This approach can provide a balance between the detailed information obtained from top-down analysis and the higher throughput of bottom-up analysis.
 
+**PTM (Post-Translational Modification)**
+: A covalent chemical modification of a protein after translation, such as phosphorylation or ubiquitination, that regulates its activity, localization, or stability.
+In MS-based proteomics, PTMs are identified by the mass shift they cause on a modifiable amino acid residue.
+
+**LC (Liquid Chromatography)**
+: A separation technique that spreads the elution of peptides into the mass spectrometer over time, increasing sensitivity.
+
+**Centroiding**
+: A spectral preprocessing step in which each profile-mode mass peak is reduced to a single representative peak.
+
+**Deisotoping**
+: A spectral preprocessing step in which the isotopic cluster of an ion is collapsed into a single peak corresponding to its monoisotopic mass.
+
+**Monoisotopic mass**
+: The mass of a molecule calculated using the most abundant isotope of each element (e.g., ^12^C, ^1^H, ^14^N, ^16^O).
+
+**Diagnostic ion**
+: A fragment ion that is characteristic of a specific modification, such as the phosphotyrosine immonium ion at *m/z* 216.042, and that supports its identification.
+
+**Neutral loss**
+: The loss of an uncharged chemical group, such as water or phosphoric acid, from a precursor or fragment ion during fragmentation.
+
+**FDR (False Discovery Rate)**
+: The expected proportion of false positive identifications among all accepted identifications, commonly controlled at 1%.
+
+**Target-decoy approach**
+: A strategy for FDR estimation in which spectra are also searched against a decoy database, typically reversed protein sequences, so that the number of decoy hits estimates the number of false positive target hits.
+
+**PEP (Posterior Error Probability)**
+: The probability that an individual identification is incorrect, calculated using Bayes' theorem from properties of the peptide-spectrum match.
+
+**Protein group**
+: A set of proteins that cannot be distinguished from each other based on their identified peptides and are therefore reported together.
+
+**Razor peptide**
+: A peptide shared between multiple proteins, which in MaxQuant is assigned to the protein group with the most identified peptides.
+
+**FASTA**
+: A plain text format for sequence databases, in which each entry consists of a header line starting with `>` followed by the amino acid or nucleotide sequence.
+
+**Swiss-Prot / TrEMBL**
+: The two sections of the UniProt Knowledgebase. Swiss-Prot contains manually reviewed and curated protein entries, while TrEMBL contains unreviewed, automatically annotated entries.

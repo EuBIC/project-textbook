@@ -1,3 +1,9 @@
 .csl-entry {
   margin-bottom: 1em;
 }
+
+/* keep figures within the text column */
+.figure-img {
+  max-width: 100%;
+  height: auto;
+}
